@@ -2,7 +2,9 @@
     include "header.php";
 ?>
 
-
+<?php
+echo "Test";
+?>
 
 
 <?php
