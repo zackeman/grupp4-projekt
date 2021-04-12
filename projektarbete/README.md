@@ -1,7 +1,6 @@
 # grupp4-projekt
 
 Strukturen på mappar är enligt detta:
-
 https://docs.php.earth/faq/misc/structure/#:~:text=When%20it%20comes%20to%20PHP,directory%20named%20src%20or%20app%20.&text=In%20modern%20PHP%20applications%2C%20structuring,subdirectory%20in%20the%20src%20directory.
 
 project-root/
