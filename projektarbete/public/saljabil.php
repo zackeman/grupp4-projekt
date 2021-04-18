@@ -24,6 +24,18 @@ require_once '../src/db.php';
                 <input name="email" type="email" required class="form-control" placeholder="E-post">
             </div>
             <div class="col-md-6 m-2">
+                <input name="manufacturer" type="text" required class="form-control" placeholder="Tillverkare">
+            </div>
+            <div class="col-md-6 m-2">
+                <input name="model" type="text" required class="form-control" placeholder="Modell">
+            </div>
+            <div class="col-md-6 m-2">
+                <input name="year" type="text" required class="form-control" placeholder="Årsmodell">
+            </div>
+            <div class="col-md-6 m-2">
+                <input name="miles" type="text" required class="form-control" placeholder="Antal mil">
+            </div>
+            <div class="col-md-6 m-2">
                 <input name="regnr" type="text" required class="form-control" placeholder="Registreringsnummer">
             </div>
             <div class="col-md-12 m-2">
