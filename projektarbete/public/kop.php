@@ -6,7 +6,7 @@ include 'header.php';
 
 <!-- Start produktsida -->
 <?php
-include 'products.php';
+require '../src/products.phpproducts.php';
 ?>
 <!-- Slut produktsida -->
 

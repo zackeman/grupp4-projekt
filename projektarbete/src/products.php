@@ -5,7 +5,6 @@ require 'db.php';
 $stmt = $pdo->prepare("SELECT * FROM products");
 $stmt->execute();
 
-
 //
 // Ifall man vill visa produkterna som tabell, men vi använder Bootstrap-cards
 //
