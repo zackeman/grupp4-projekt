@@ -1,6 +1,7 @@
 <?php
 
-require "../public/header.php";
+require '../public/header.php';
+require 'functions.php';
 
 //Hämta data från form i saljabil.php
 
@@ -58,17 +59,6 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
 
     echo "<p> $regnr har registrerats! </p>";
     
-}
-
-
-//Testa $_POST datan from form så att den inte innehåller felaktiga tecken etc.
-function test_input($data)
-{
-    $data = trim($data);
-    $data = stripslashes($data);
-    $data = htmlspecialchars($data);
-
-    return $data;
 }
 
 require "../public/footer.php";

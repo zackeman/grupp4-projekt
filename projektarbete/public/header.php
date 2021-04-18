@@ -19,7 +19,7 @@
 <body>
   <!-- Topbar -->
   <div class="alert alert-warning m-0 text-center">
-    På grund av rådande pandemi, kan leveranser bli sen leverererade.
+    På grund av rådande pandemi, kan leveranser bli sent leverererade.
   </div>
   <!--Topbar slut -->
 
@@ -50,6 +50,12 @@
           </div>
         </li>
       </ul>
+
+      <!-- SÖKRUTA -->
+      <form class="form-inline my-2 my-lg-0" action='search.php' method="GET">
+        <input class="form-control mr-sm-2" name="search" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Sök</button>
+      </form>
 
     </div>
   </nav>
