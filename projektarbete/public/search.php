@@ -41,7 +41,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
         $cards =
             "<div class='container'>
             <br>
-            <h4 class='text-center'>Sökresultat för $searchstring</h2>
+            <h4 class='text-center'>Sökresultat för <i>$searchstring</i></h2>
             <br>
             <div class='row' id='ads'>";
 
