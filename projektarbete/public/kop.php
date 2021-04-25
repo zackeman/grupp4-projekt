@@ -40,7 +40,6 @@ if (empty($_GET)) {
   echo "<META HTTP-EQUIV='Refresh'>";
 }
 
-
 $stmt = $pdo->prepare("SELECT * FROM products ORDER BY $orderBy");
 $stmt->execute();
 

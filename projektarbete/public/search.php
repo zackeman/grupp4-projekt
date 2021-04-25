@@ -62,7 +62,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
                 </div>
                 <div class='card-body text-center'>
                     <div class='ad-title m-auto'>
-                    <h5>$$result[model]</h5>
+                    <h5>$result[model]</h5>
                     </div>
                     <a class='ad-btn' href='#'>Köp nu</a>
                 </div>
