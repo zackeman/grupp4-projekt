@@ -8,6 +8,7 @@ require 'functions.php';
 if ($_SERVER['REQUEST_METHOD'] === "POST") {
 
     require_once '../src/db.php';
+    require_once '../src/upload.php';
 
     // Skapa variabler av $_POST-data
     $firstName = test_input($_POST['firstname']);
@@ -19,6 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
     $miles = test_input($_POST['miles']);
     $regnr = test_input($_POST['regnr']);
     $description = test_input($_POST['description']);
+    $img = $_FILES['uploadedFile'];
 
     // Lägg in data i databasen
     $sql = "INSERT INTO products(
@@ -58,7 +60,6 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
                 $description]);
 
     echo "<p> $regnr har registrerats! </p>";
-    
 }
 
 require "../public/footer.php";

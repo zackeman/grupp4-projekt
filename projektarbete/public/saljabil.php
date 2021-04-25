@@ -13,7 +13,7 @@ require_once '../src/db.php';
     </p><br>
 
     <div class="container">
-        <form action="../src/create.php" method="post" class="row">
+        <form action="../src/create.php" method="post" class="row" enctype="multipart/form-data">
             <div class="col-md-6 m-2">
                 <input name="firstname" type="text" required class="form-control" placeholder="Förnamn">
             </div>
@@ -41,13 +41,19 @@ require_once '../src/db.php';
             <div class="col-md-12 m-2">
                 <textarea name="description" cols="30" rows="5" required class="form-control" placeholder="Beskriv bilens skick, och annat om bilen"></textarea>
             </div>
-            <div class="col-md-4 ml-2 mt-1">
+
+            <!-- Bilduppladdning -->
+            <div class="col-md-12 m-2">
+                <p class="file-name">Välj en bild...</p>
+                <label for="file-upload"><input type="file" id="file-upload" name="uploadedFile"></label>
+
+            </div>
+            <div class="col-md-12 m-2">
                 <input type="submit" value="Skicka meddelandet" class="btn btn-success form-control">
             </div>
         </form>
+
     </div>
-
-
 
     <!-- Footer --->
     <?php
