@@ -41,18 +41,31 @@ require_once '../src/db.php';
             <div class="col-md-12 m-2">
                 <textarea name="description" cols="30" rows="5" required class="form-control" placeholder="Beskriv bilens skick, och annat om bilen"></textarea>
             </div>
-
             <!-- Bilduppladdning -->
             <div class="col-md-12 m-2">
-                <p class="file-name">Välj en bild...</p>
-                <label for="file-upload"><input type="file" id="file-upload" name="uploadedFile"></label>
-
+                <label for="fileToUpload" class="form-control">Välj en bild...</label>
+                <input type="file" name="fileToUpload" id="fileToUpload" accept="image/png, image/jpeg">
+                <input type="button" name="submitFile" value="Ladda upp">
             </div>
+
+            <?php
+
+            if (!empty($_FILES['fileToUpload'])) {
+                /* $fileTmpPath = $_FILES['uploadedFile']['tmp_name'];
+                $fileName = $_FILES['uploadedFile']['name'];
+                $fileSize = $_FILES['uploadedFile']['size'];
+                $fileType = $_FILES['uploadedFile']['type'];
+                $fileNameCmps = explode(".", $fileName);
+                $fileExtension = strtolower(end($fileNameCmps)); */
+
+                print_r($_FILES['fileToUpload']);
+            }
+            ?>
+
             <div class="col-md-12 m-2">
                 <input type="submit" value="Skicka meddelandet" class="btn btn-success form-control">
             </div>
         </form>
-
     </div>
 
     <!-- Footer --->

@@ -73,98 +73,40 @@ include 'header.php';
 </div>
 <div class="container">
 
-  <br>
-  <h4 class="text-center">Nyinkomna bilar i lager!</h2>
-    <br>
-    <div class="row" id="ads">
-      <!-- Category Card -->
-      <div class="col-md-4">
-        <div class="card rounded">
-          <div class="card-image">
-            <span class="card-notify-badge">Fullt utrustad</span>
-
-            <img class="img-fluid" src="bilder/tesla-nyinkomna.jpg" alt="Alternate Text" />
-          </div>
-          <div class="card-image-overlay m-auto">
-            <span class="card-detail-badge bg-warning">2018</span>
-            <span class="card-detail-badge bg-warning">549 000 kr</span>
-            <span class="card-detail-badge bg-warning">1 967 mil</span>
-          </div>
-          <div class="card-body text-center">
-            <div class="ad-title m-auto">
-              <h5>Tesla Model S 75d</h5>
-            </div>
-            <a class="ad-btn" href="#">Köp nu</a>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="card rounded">
-          <div class="card-image">
-            <span class="card-notify-badge">Inscription</span>
-
-            <img class="img-fluid" src="bilder/xc90-nyinkomna.jpg" alt="Alternate Text" />
-          </div>
-          <div class="card-image-overlay m-auto">
-            <span class="card-detail-badge bg-warning">2016</span>
-            <span class="card-detail-badge bg-warning">309 999 kr</span>
-            <span class="card-detail-badge bg-warning">7 854 mil</span>
-          </div>
-          <div class="card-body text-center">
-            <div class="ad-title m-auto">
-              <h5>Volvo XC90 D5</h5>
-            </div>
-            <a class="ad-btn" href="#">Köp nu</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-md-4">
-        <div class="card rounded">
-          <div class="card-image">
-            <span class="card-notify-badge">M-Sport</span>
-
-            <img class="img-fluid" src="bilder/bmw-nyinkomna.jpg" alt="Alternate Text" />
-          </div>
-          <div class="card-image-overlay m-auto">
-            <span class="card-detail-badge bg-warning">2018</span>
-            <span class="card-detail-badge bg-warning">370 000 kr</span>
-            <span class="card-detail-badge bg-warning">7 262 mil</span>
-          </div>
-          <div class="card-body text-center">
-            <div class="ad-title m-auto">
-              <h5>BMW 530e iPerformance</h5>
-            </div>
-            <a class="ad-btn" href="#">Köp nu</a>
-          </div>
-        </div>
-      </div>
-
-    </div>
-</div>
-<!-- Erbjudanden här-->
-<div class="container">
-  <h3 class="text-center mt-3">ERBJUDANDEN</h3>
-  <div class="row">
-    <div class="card col-sm-7 pt-3 mr-3" style="width: 18rem;">
-      <img class="card-img-top" src="bilder/biltvatt.jpg" alt="Card image cap">
-      <div class="card-body">
-        <p class="card-text">Köp en bil idag, så bjuder vi på rekond i 4 månader!</p>
-      </div>
-    </div>
-
-    <div class="card col-sm-4 pt-3" style="width: 18rem;">
-      <img class="card-img-top" src="bilder/glad-biltvatt.jpg" alt="Card image cap">
-      <div class="card-body">
-        <p class="card-text">Vi kan erbjuda en bra finansiering till dig som privatperson eller
-          företagare vid köp av din bil (Nordea finans, Santander & DnB NoR finans). Vi skräddarsyr en finansiering som passar just dig! </p>
-      </div>
-
-    </div>
-  </div>
-
-  <!-- Erbjudanden slut-->
-
+  <!-- Category Card -->
+  <!-- Visar de senast uppladdade bilarna(fyll i antal man vill visa som parameter) -->
   <?php
-  include 'footer.php';
+
+  include "../src/functions.php";
+
+  $limit = 3;
+  showProducts($limit);
+
   ?>
+
+  <!-- Erbjudanden här-->
+  <div class="container">
+    <h3 class="text-center mt-3">ERBJUDANDEN</h3>
+    <div class="row">
+      <div class="card col-sm-7 pt-3 mr-3" style="width: 18rem;">
+        <img class="card-img-top" src="bilder/biltvatt.jpg" alt="Card image cap">
+        <div class="card-body">
+          <p class="card-text">Köp en bil idag, så bjuder vi på rekond i 4 månader!</p>
+        </div>
+      </div>
+
+      <div class="card col-sm-4 pt-3" style="width: 18rem;">
+        <img class="card-img-top" src="bilder/glad-biltvatt.jpg" alt="Card image cap">
+        <div class="card-body">
+          <p class="card-text">Vi kan erbjuda en bra finansiering till dig som privatperson eller
+            företagare vid köp av din bil (Nordea finans, Santander & DnB NoR finans). Vi skräddarsyr en finansiering som passar just dig! </p>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Erbjudanden slut-->
+
+    <?php
+    include 'footer.php';
+    ?>

@@ -20,7 +20,33 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
     $miles = test_input($_POST['miles']);
     $regnr = test_input($_POST['regnr']);
     $description = test_input($_POST['description']);
-    $img = $_FILES['uploadedFile'];
+   // $img = validateImage($_FILES['uploadedFile']);
+
+    echo "
+    <div class='container'>
+      <div class='row' id='ads'>
+        <!-- Category Card -->
+        <div class='col-md-4'>
+          <div class='card rounded'>
+            <div class='card-image'>
+              <span class='card-notify-badge'>$manufacturer $model</span>
+  
+              <img class='img-fluid' src='../public/bilder/tesla-nyinkomna.jpg' alt='Alternate Text' />
+            </div>
+            <div class='card-image-overlay m-auto'>
+              <span class='card-detail-badge bg-warning'>$year</span>
+              <span class='card-detail-badge bg-warning'></span>
+              <span class='card-detail-badge bg-warning'>$miles mil</span>
+            </div>
+            <div class='card-body text-center'>
+              <div class='ad-title m-auto'>
+                <h5>$model</h5>
+              </div>
+              <a class='ad-btn' href='#'>Köp nu</a>
+            </div>
+          </div>
+        </div>
+        ";
 
     // Lägg in data i databasen
     $sql = "INSERT INTO products(
