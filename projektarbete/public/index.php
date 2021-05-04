@@ -74,13 +74,21 @@ include 'header.php';
 <div class="container">
 
   <!-- Category Card -->
-  <!-- Visar de senast uppladdade bilarna(fyll i antal man vill visa som parameter) -->
+  <!-- 
+      Funktionen showProducts visar de senast uppladdade
+      bilarna(fyll i antal man vill visa som parameter genom $limit) (3st standard)
+  -->
   <?php
 
   include "../src/functions.php";
 
+  $orderBy = 'dateuploaded';
+  $order = 'ASC';
   $limit = 3;
-  showProducts($limit);
+
+  showProducts($orderBy,
+               $order,
+               $limit);
 
   ?>
 

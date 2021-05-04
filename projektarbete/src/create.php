@@ -58,7 +58,8 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
                     year,
                     miles,
                     regnr,
-                    description
+                    description,
+                    dateuploaded
                 )
                 VALUES (
                     ?,
@@ -69,7 +70,8 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
                     ?,
                     ?,
                     ?,
-                    ?
+                    ?,
+                    NOW()
                 )";
                     
 
@@ -77,15 +79,20 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
     $stmt->execute([
                 $firstName,
                 $lastName, 
-                $email, 
+                $email,
                 $manufacturer, 
                 $model, 
                 $year, 
                 $miles, 
                 $regnr, 
-                $description]);
+                $description,
+                ]);
 
-    echo "<p> $regnr har registrerats! </p>";
+    echo "<p class='alert'> <h3> $regnr har registrerats! </h3></p>
+          <p>Du blir omdirigerad till startsidan inom 2 sekunder.</p>";
+
+    //header("refresh:2;url=../public/index.php");
+    echo "<meta content='2; URL = ../public/index.php' http-equiv='Refresh' />";
 }
 
 require "../public/footer.php";

@@ -10,37 +10,60 @@ function test_input($data)
     return $data;
 }
 
-function showProducts($limit) {
-    require_once "../src/db.php";
+// Visa produkter sorterat efter vad man väljer att sortera i kop.php samt i vilken ordning
+function showProducts($orderBy, $order, $limit)
+{
+    require "../src/db.php";
+
+    //
+    // Strängen för en int(LIMIT i dettta fall) konverteras fel så länge PDO:EMULATION är aktiv vid
+    // prepared statements och man vill binda värdet efteråt i en array
+    // 
+    // !! har lagt in variabeler direkt i queryn trots att det inte skall göras, men fungerar i detta fall...
+    //
+    // för info angående fel se länk: https://phpdelusions.net/pdo#limit
+
+    /* Another problem is related to the SQL LIMIT clause.
+    When in emulation mode (which is on by default),
+    PDO substitutes placeholders with actual data, instead of sending it separately.
+    And with "lazy" binding (using array in execute()),
+    PDO treats every parameter as a string. As a result,
+    the prepared LIMIT ?,? query becomes LIMIT '10', '10' which is invalid syntax that causes query to fail. */
 
 
-      $stmt = $pdo->prepare("SELECT * FROM products ORDER BY dateuploaded LIMIT $limit");
-      $stmt->execute();
-      
-      
-      while ($product = $stmt->fetch(PDO::FETCH_ASSOC)) {
+    $sql = "SELECT * FROM products
+             ORDER BY $orderBy $order LIMIT $limit";
+
+    $stmt = $pdo->prepare($sql);
+
+    $stmt->execute(/* [$orderBy, $order] */);
+
+    // Testa om rätt parametrar skickas till databasen
+    /*  echo "<pre>";
+    $stmt->debugDumpParams();
+    echo "</pre>"; */
+
+
+    while ($product = $stmt->fetch(PDO::FETCH_ASSOC)) {
         $products[] = $product;
-      }
-      
-      //
-      // Visa alla bilar i lager
-      //
-      
-      $cards =
+    }
+
+    //
+    // Visar varje SELECTED product som ett card 
+    //
+
+    $cards =
         "<div class='container'>
         <br>
-          <h4 class='text-center'>Nyinkomna bilar i lager!</h2>
-            <br>
             <div class='row' id='ads'>";
-      
-      
-      
-      foreach ($products as $product) {
+
+
+    foreach ($products as $product) {
         $cards .=
-          "<div class='col-md-4'>
+            "<div class='col-md-4'>
           <div class='card rounded'>
             <div class='card-image'>
-              <span class='card-notify-badge'>$product[manufacturer] $product[model]</span>
+              <span class='card-notify-badge'>$product[manufacturer] $product[model] $orderBy</span>
           
               <img class='img-fluid' src='bilder/tesla-nyinkomna.jpg' alt='Alternate Text' />
             </div>
@@ -57,9 +80,9 @@ function showProducts($limit) {
             </div>
           </div>
           </div>";
-      }
-      
-      echo "$cards
+    }
+
+    echo "$cards
           </div>
       </div>";
 }
