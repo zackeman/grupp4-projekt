@@ -19,7 +19,7 @@ function showProducts($orderBy, $order, $limit)
     // Strängen för en int(LIMIT i dettta fall) konverteras fel så länge PDO:EMULATION är aktiv vid
     // prepared statements och man vill binda värdet efteråt i en array
     // 
-    // !! har lagt in variabeler direkt i queryn trots att det inte skall göras, men fungerar i detta fall...
+    // !! har lagt in variabler direkt i queryn trots att det inte skall göras, men fungerar i detta fall...
     //
     // för info angående fel se länk: https://phpdelusions.net/pdo#limit
 
@@ -43,14 +43,13 @@ function showProducts($orderBy, $order, $limit)
     $stmt->debugDumpParams();
     echo "</pre>"; */
 
+    //
+    // Visar varje SELECTED product som ett card 
+    //
 
     while ($product = $stmt->fetch(PDO::FETCH_ASSOC)) {
         $products[] = $product;
     }
-
-    //
-    // Visar varje SELECTED product som ett card 
-    //
 
     $cards =
         "<div class='container'>
@@ -63,7 +62,7 @@ function showProducts($orderBy, $order, $limit)
             "<div class='col-md-4'>
           <div class='card rounded'>
             <div class='card-image'>
-              <span class='card-notify-badge'>$product[manufacturer] $product[model] $orderBy</span>
+              <span class='card-notify-badge'>$product[manufacturer] $product[model]</span>
           
               <img class='img-fluid' src='bilder/tesla-nyinkomna.jpg' alt='Alternate Text' />
             </div>
