@@ -4,7 +4,9 @@ require_once '../src/db.php';
 ?>
 <!-- Slut på Header/Nav -->
 
-<h1 class="display-4 text-center mb-4">Sälj din bil till oss</h1>
+<script src="../src/ajax-upload.js"></script>
+
+<h1 class="display-4 text-center mb-4">Sälj din bil via oss</h1>
 
 <div class="container">
 
@@ -13,7 +15,7 @@ require_once '../src/db.php';
     </p><br>
 
     <div class="container">
-        <form action="../src/create.php" method="post" class="row" enctype="multipart/form-data">
+        <form action="../src/create.php" method="post" class="row" enctype="multipart/form-data" id="myform">
             <div class="col-md-6 m-2">
                 <input name="firstname" type="text" required class="form-control" placeholder="Förnamn">
             </div>
@@ -41,26 +43,17 @@ require_once '../src/db.php';
             <div class="col-md-12 m-2">
                 <textarea name="description" cols="30" rows="5" required class="form-control" placeholder="Beskriv bilens skick, och annat om bilen"></textarea>
             </div>
+
             <!-- Bilduppladdning -->
             <div class="col-md-12 m-2">
-                <label for="fileToUpload" class="form-control">Välj en bild...</label>
-                <input type="file" name="fileToUpload" id="fileToUpload" accept="image/png, image/jpeg">
-                <input type="button" name="submitFile" value="Ladda upp">
+                <div class='preview mb-2'>
+                    <img src="" id="img" width="150" height="150">
+                </div>
+                <input type="file" id="file" name="file" />
+                <input type="button" class="button" value="Ladda upp" id="but_upload">
+
+
             </div>
-
-            <?php
-
-            if (!empty($_FILES['fileToUpload'])) {
-                /* $fileTmpPath = $_FILES['uploadedFile']['tmp_name'];
-                $fileName = $_FILES['uploadedFile']['name'];
-                $fileSize = $_FILES['uploadedFile']['size'];
-                $fileType = $_FILES['uploadedFile']['type'];
-                $fileNameCmps = explode(".", $fileName);
-                $fileExtension = strtolower(end($fileNameCmps)); */
-
-                print_r($_FILES['fileToUpload']);
-            }
-            ?>
 
             <div class="col-md-12 m-2">
                 <input type="submit" value="Skicka meddelandet" class="btn btn-success form-control">
