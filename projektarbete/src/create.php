@@ -7,22 +7,28 @@ require 'functions.php';
 
 if ($_SERVER['REQUEST_METHOD'] === "POST") {
 
-    require_once '../src/db.php';
-    require_once '../src/upload.php';
+  require_once '../src/db.php';
+  require_once '../src/upload.php';
 
-    // Skapa variabler av $_POST-data
-    $firstName = test_input($_POST['firstname']);
-    $lastName = test_input($_POST['lastname']);
-    $email = test_input($_POST['email']);
-    $manufacturer = test_input($_POST['manufacturer']);
-    $model = test_input($_POST['model']);
-    $year = test_input($_POST['year']);
-    $miles = test_input($_POST['miles']);
-    $regnr = test_input($_POST['regnr']);
-    $description = test_input($_POST['description']);
-   // $img = validateImage($_FILES['uploadedFile']);
+  // Skapa variabler av $_POST-data
+  $firstName = test_input($_POST['firstname']);
+  $lastName = test_input($_POST['lastname']);
+  $email = test_input($_POST['email']);
+  $manufacturer = test_input($_POST['manufacturer']);
+  $model = test_input($_POST['model']);
+  $year = test_input($_POST['year']);
+  $miles = test_input($_POST['miles']);
+  $regnr = test_input($_POST['regnr']);
+  $description = test_input($_POST['description']);
 
-    echo "
+  if (empty($_FILES)) {
+    $img = 'no-image.jpg';
+  } else {
+    $img = ($_FILES['name']);
+  }
+
+
+  echo "
     <div class='container'>
       <div class='row' id='ads'>
         <!-- Category Card -->
@@ -48,8 +54,8 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
         </div>
         ";
 
-    // Lägg in data i databasen
-    $sql = "INSERT INTO products(
+  // Lägg in data i databasen
+  $sql = "INSERT INTO products(
                     firstname,
                     lastname,
                     email,
@@ -73,26 +79,26 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
                     ?,
                     NOW()
                 )";
-                    
 
-    $stmt = $pdo->prepare($sql);
-    $stmt->execute([
-                $firstName,
-                $lastName, 
-                $email,
-                $manufacturer, 
-                $model, 
-                $year, 
-                $miles, 
-                $regnr, 
-                $description,
-                ]);
 
-    echo "<p class='alert'> <h3> $regnr har registrerats! </h3></p>
+  $stmt = $pdo->prepare($sql);
+  $stmt->execute([
+    $firstName,
+    $lastName,
+    $email,
+    $manufacturer,
+    $model,
+    $year,
+    $miles,
+    $regnr,
+    $description,
+  ]);
+
+  echo "<p class='alert'> <h3> $regnr har registrerats! </h3></p>
           <p>Du blir omdirigerad till startsidan inom 2 sekunder.</p>";
 
-    //header("refresh:2;url=../public/index.php");
-    echo "<meta content='2; URL = ../public/index.php' http-equiv='Refresh' />";
+  //header("refresh:2;url=../public/index.php");
+  echo "<meta content='2; URL = ../public/index.php' http-equiv='Refresh' />";
 }
 
 require "../public/footer.php";

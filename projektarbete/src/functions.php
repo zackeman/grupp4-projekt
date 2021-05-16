@@ -64,7 +64,7 @@ function showProducts($orderBy, $order, $limit)
             <div class='card-image'>
               <span class='card-notify-badge'>$product[manufacturer] $product[model]</span>
           
-              <img class='img-fluid' src='bilder/tesla-nyinkomna.jpg' alt='Alternate Text' />
+              <img class='img-fluid' src='bilder/$product[image]' alt='no-image.jpg' />
             </div>
             <div class='card-image-overlay m-auto'>
               <span class='card-detail-badge bg-warning'>$product[year]</span>

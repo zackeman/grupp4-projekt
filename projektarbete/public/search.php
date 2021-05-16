@@ -53,7 +53,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
                 <div class='card-image'>
                     <span class='card-notify-badge'>$result[manufacturer] $result[model]</span>
 
-                    <img class='img-fluid' src='bilder/tesla-nyinkomna.jpg' alt='Alternate Text' />
+                    <img class='img-fluid' src='bilder/$result[model]' alt='Ingen bild tillgänglig'/>
                 </div>
                 <div class='card-image-overlay m-auto'>
                     <span class='card-detail-badge bg-warning'>$result[year]</span>
