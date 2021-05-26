@@ -5,24 +5,25 @@
 
 if ($_SERVER['REQUEST_METHOD'] === "POST") {
   
-  /* Getting file name */
+  /* Filnamnet */
   $filename = $_FILES['file']['name'];
 
-  /* Location */
+  /* Plats filen sparas på */
   $location = "../public/bilder/".$filename;
   $imageFileType = pathinfo($location,PATHINFO_EXTENSION);
   $imageFileType = strtolower($imageFileType);
 
-  /* Valid extensions */
+  /* Godkända bildformat */
   $valid_extensions = array("jpg","jpeg","png");
 
   $response = 0;
-  /* Check file extension */
+  /* Kolla om den uppladdade filen är av rätt typ enligt valid_extensions */
   if(in_array(strtolower($imageFileType), $valid_extensions)) {
-     /* Upload file */
+     /* OM OK = Ladda upp */
      if(move_uploaded_file($_FILES['file']['tmp_name'],$location)){
         $response = $location;
      }
   }
+  echo $response;
   exit;
 }

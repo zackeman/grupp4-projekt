@@ -83,7 +83,7 @@ include 'header.php';
   include "../src/functions.php";
 
   $orderBy = 'dateuploaded';
-  $order = 'ASC';
+  $order = 'DESC';
   $limit = 3;
 
   showProducts($orderBy,

@@ -1,5 +1,7 @@
 <?php
 
+header("refresh:2;url=../public/index.php");
+
 require '../public/header.php';
 require 'functions.php';
 
@@ -8,7 +10,6 @@ require 'functions.php';
 if ($_SERVER['REQUEST_METHOD'] === "POST") {
 
   require_once '../src/db.php';
-  require_once '../src/upload.php';
 
   // Skapa variabler av $_POST-data
   $firstName = test_input($_POST['firstname']);
@@ -20,39 +21,11 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
   $miles = test_input($_POST['miles']);
   $regnr = test_input($_POST['regnr']);
   $description = test_input($_POST['description']);
+  $img = "no-image.jpg";
 
-  if (empty($_FILES)) {
-    $img = 'no-image.jpg';
-  } else {
-    $img = ($_FILES['name']);
+  if (isset($_FILES)) {
+    $img = ($_FILES['file']['name']);
   }
-
-
-  echo "
-    <div class='container'>
-      <div class='row' id='ads'>
-        <!-- Category Card -->
-        <div class='col-md-4'>
-          <div class='card rounded'>
-            <div class='card-image'>
-              <span class='card-notify-badge'>$manufacturer $model</span>
-  
-              <img class='img-fluid' src='../public/bilder/tesla-nyinkomna.jpg' alt='Alternate Text' />
-            </div>
-            <div class='card-image-overlay m-auto'>
-              <span class='card-detail-badge bg-warning'>$year</span>
-              <span class='card-detail-badge bg-warning'></span>
-              <span class='card-detail-badge bg-warning'>$miles mil</span>
-            </div>
-            <div class='card-body text-center'>
-              <div class='ad-title m-auto'>
-                <h5>$model</h5>
-              </div>
-              <a class='ad-btn' href='#'>Köp nu</a>
-            </div>
-          </div>
-        </div>
-        ";
 
   // Lägg in data i databasen
   $sql = "INSERT INTO products(
@@ -65,6 +38,7 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
                     miles,
                     regnr,
                     description,
+                    image,
                     dateuploaded
                 )
                 VALUES (
@@ -77,7 +51,8 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
                     ?,
                     ?,
                     ?,
-                    NOW()
+                    ?,
+                    NOW() 
                 )";
 
 
@@ -92,13 +67,13 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
     $miles,
     $regnr,
     $description,
+    $img
   ]);
 
-  echo "<p class='alert'> <h3> $regnr har registrerats! </h3></p>
-          <p>Du blir omdirigerad till startsidan inom 2 sekunder.</p>";
-
-  //header("refresh:2;url=../public/index.php");
-  echo "<meta content='2; URL = ../public/index.php' http-equiv='Refresh' />";
+  echo "<div class='col-sm-4'>
+          <p class='alert'> <h3> $regnr har registrerats! </h3></p>
+          <p>Du blir omdirigerad till startsidan inom 2 sekunder.</p>
+        </div>";
 }
 
 require "../public/footer.php";

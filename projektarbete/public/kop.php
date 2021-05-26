@@ -5,7 +5,6 @@ include 'header.php';
 
 <!-- Listruta för att välja sortering -->
 
-
 <div class="row mb-0">
   <div class="input-group col-md-2 float-end">
     <form class="float-end" action="#" method="GET" id="carform">
@@ -48,7 +47,6 @@ if (empty($_GET)) {
   $limit = 30;
 
   showProducts($orderBy, $order, $limit);
-  
 }
 
 ?>
