@@ -1,0 +1,110 @@
+/* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    
+    
+    
+}
+
+.container{
+    width: 720px;
+    margin: 0 auto;
+    margin-top:80px; 
+}
+
+body, button {
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+    
+}*/
+body{
+    
+    background-size:cover;
+    
+}
+
+header{
+    display: block;
+}
+
+
+.hero{
+    float:left;
+}
+.hero h1{
+    color:#cacaca;
+    font-size: 5em;
+    width:330px;
+    line-height: 1em;
+    background: url(bilder/main-image.jpg);
+    background-size: cover;
+    background-position:center ;
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+}
+.hero p {
+    color:#63605e;
+    width:330px;
+    padding:20px 0;
+
+}
+.hero button {
+    padding:2px 15px;
+    border-radius: 15px;
+    border: none;
+    background-color: #eec821;
+    color:white;
+    text-transform: uppercase;
+    font-size:  16px;
+
+}
+.logo img {
+    float: right;
+    width: 100px;
+
+}
+section {
+    display: inline-block;
+}
+section .hand-written { 
+    font-family: 'Dancing Script', cursive ;
+    font-size: 60px;
+    color:#63605e;
+    width: 330px;
+    transform: rotate(330deg);
+    line-height: 1em;
+}
+section .main-image{
+    position:relative;
+    top: -250px;
+    z-index: index 0;
+}
+
+section .main-image img{
+    width: 60%;
+    float: right;
+}
+footer{
+    position: relative;
+    top:-180px;
+}
+footer .social img{
+    float:left;
+    width: 50px;
+    padding-right: 10px;
+}
+footer .contact-info p{
+    color:#63605e;
+}
+footer .social ul li{
+    list-style-type: none;
+}
+footer .website a{
+    float: right;
+    color: #63605e;
+    text-decoration: none;
+
+}
+ 
