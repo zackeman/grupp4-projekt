@@ -21,7 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
   $miles = test_input($_POST['miles']);
   $regnr = test_input($_POST['regnr']);
   $description = test_input($_POST['description']);
-  $img = "no-image.jpg";
+  $img = "";
 
   if($_FILES['file']['error'] == 0) {
     $img = ($_FILES['file']['name']);
