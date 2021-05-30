@@ -23,8 +23,12 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
   $description = test_input($_POST['description']);
   $img = "no-image.jpg";
 
-  if (isset($_FILES)) {
+  if($_FILES['file']['error'] == 0) {
     $img = ($_FILES['file']['name']);
+  }
+
+  if ($_FILES['file']['error'] == 4) {
+    $img = 'no-image.jpg';
   }
 
   // Lägg in data i databasen
